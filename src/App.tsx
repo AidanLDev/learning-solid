@@ -1,8 +1,15 @@
-import { Component, createSignal } from 'solid-js';
+import { Component, createSignal, createEffect } from 'solid-js';
 import Header from './components/Header';
 
 const App: Component = () => {
   const [count, setCount] = createSignal(0);
+  console.log('App render'); //  Only runs once
+
+  createEffect(() => {
+    console.log('Effect');
+    // Could send fetch reqs here
+    console.log('Effect - executes because counter updated', count());
+  });
   return (
     <div class='wrapper'>
       {' '}
